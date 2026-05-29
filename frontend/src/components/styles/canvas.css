@@ -1,0 +1,254 @@
+/* ── Canvas shell ───────────────────────────────────────────── */
+.canvas-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ── Canvas topbar ──────────────────────────────────────────── */
+.canvas-topbar {
+  height: var(--topbar-h);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.canvas-topbar-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-right: 8px;
+}
+
+.canvas-topbar-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.canvas-topbar-spacer { flex: 1; }
+
+/* ── Canvas body ────────────────────────────────────────────── */
+.canvas-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── ReactFlow overrides ────────────────────────────────────── */
+.react-flow {
+  background: var(--bg) !important;
+}
+
+.react-flow__background pattern circle,
+.react-flow__background pattern rect {
+  fill: #1F1F1F !important;
+}
+
+.react-flow__edge-path {
+  stroke: #2A2A2A !important;
+  stroke-width: 1.5px !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #52525B !important;
+}
+
+.react-flow__edge-path.animated {
+  stroke-dasharray: 5 3;
+  animation: edge-flow 1s linear infinite;
+}
+
+@keyframes edge-flow {
+  to { stroke-dashoffset: -8; }
+}
+
+.react-flow__arrowhead path { fill: #2A2A2A !important; }
+
+.react-flow__handle {
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--surface) !important;
+  border: 1.5px solid var(--border-2) !important;
+  border-radius: 50% !important;
+  transition: border-color 150ms, background 150ms;
+}
+
+.react-flow__handle:hover,
+.react-flow__handle.connecting {
+  background: var(--text) !important;
+  border-color: var(--text) !important;
+}
+
+.react-flow__controls {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+  bottom: 24px !important;
+  left: 24px !important;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-2) !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.react-flow__controls-button:last-child { border-bottom: none !important; }
+.react-flow__controls-button:hover { background: var(--surface-3) !important; color: var(--text) !important; }
+.react-flow__controls-button svg { fill: currentColor !important; }
+
+.react-flow__minimap {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+  bottom: 24px !important;
+  right: 24px !important;
+}
+
+.react-flow__minimap-mask { fill: rgba(10,10,10,0.7) !important; }
+.react-flow__minimap-node { fill: var(--surface-3) !important; stroke: var(--border-2) !important; }
+
+.react-flow__selection {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid var(--border-2) !important;
+}
+
+.react-flow__nodesselection-rect {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid var(--border-2) !important;
+}
+
+/* ── Node panel (right sidebar) ─────────────────────────────── */
+.node-panel {
+  width: 280px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.node-panel-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.node-panel-title { font-size: 13px; font-weight: 500; color: var(--text); }
+
+.node-panel-body { padding: 16px; flex: 1; }
+
+.node-panel-section { margin-bottom: 20px; }
+.node-panel-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+/* ── Node picker (left sidebar) ─────────────────────────────── */
+.node-picker {
+  width: 56px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.node-picker-item {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-2);
+  font-size: 16px;
+  cursor: grab;
+  border: 1px solid transparent;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.node-picker-item:hover {
+  background: var(--surface-3);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.node-picker-item:active { cursor: grabbing; }
+
+/* ── Canvas context menu ────────────────────────────────────── */
+.canvas-context-menu {
+  position: absolute;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.context-menu-item:hover { background: var(--surface-3); color: var(--text); }
+.context-menu-item.danger { color: var(--error); }
+.context-menu-item.danger:hover { background: var(--error-bg); }
+.context-menu-sep { border: none; border-top: 1px solid var(--border); margin: 3px 0; }
+
+/* ── Canvas status bar ──────────────────────────────────────── */
+.canvas-statusbar {
+  height: 30px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+  font-size: 11px;
+  color: var(--text-4);
+  flex-shrink: 0;
+}
+
+.canvas-statusbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.canvas-statusbar .error-count { color: var(--error); }
+.canvas-statusbar .ok { color: var(--success); }

@@ -1,0 +1,155 @@
+/* ── Base node ──────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-width: 200px;
+  max-width: 240px;
+  font-size: 13px;
+  transition: border-color 150ms;
+  cursor: default;
+}
+
+.node:hover            { border-color: var(--border-2); }
+.node.selected         { border-color: var(--border-3); }
+.node.has-error        { border-color: var(--error-border); }
+.node.running          { border-color: #2A2A2A; }
+
+/* ── Node header ────────────────────────────────────────────── */
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.node-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.node-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.node-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── Node body ──────────────────────────────────────────────── */
+.node-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.node-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.node-field-key   { color: var(--text-4); }
+.node-field-value {
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Node footer ────────────────────────────────────────────── */
+.node-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-4);
+}
+
+/* ── Node types ─────────────────────────────────────────────── */
+.node-trigger   .node-icon { color: var(--success); border-color: var(--success-border); background: var(--success-bg); }
+.node-action    .node-icon { color: var(--info);    border-color: var(--info-border);    background: var(--info-bg); }
+.node-condition .node-icon { color: var(--warning); border-color: var(--warning-border); background: var(--warning-bg); }
+.node-transform .node-icon { color: #A78BFA;        border-color: #2e1065;               background: #1a0a3a; }
+.node-code      .node-icon { color: var(--text-2);  border-color: var(--border);         background: var(--surface-3); }
+.node-delay     .node-icon { color: var(--text-3);  border-color: var(--border);         background: var(--surface-3); }
+
+.node-trigger   .node-badge { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
+.node-action    .node-badge { background: var(--info-bg);    color: var(--info);    border: 1px solid var(--info-border); }
+.node-condition .node-badge { background: var(--warning-bg); color: var(--warning); border: 1px solid var(--warning-border); }
+
+/* ── Node states ────────────────────────────────────────────── */
+.node-status-bar {
+  height: 3px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  background: transparent;
+}
+
+.node.running  .node-status-bar { background: var(--border-2); animation: node-progress 1s ease-in-out infinite alternate; }
+.node.success  .node-status-bar { background: var(--success); }
+.node.error    .node-status-bar { background: var(--error); }
+
+@keyframes node-progress {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+
+/* ── Error tooltip ──────────────────────────────────────────── */
+.node-error-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--error);
+  flex-shrink: 0;
+}
+
+.node-error-msg {
+  font-size: 11px;
+  color: var(--error);
+  padding: 6px 12px;
+  border-top: 1px solid var(--error-border);
+  background: var(--error-bg);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  line-height: 1.4;
+}
+
+/* ── Execution output overlay ───────────────────────────────── */
+.node-output {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  background: var(--surface-2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

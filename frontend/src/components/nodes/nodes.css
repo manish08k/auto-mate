@@ -1,0 +1,254 @@
+/* ============================================
+   FlowOS — Node Design System
+   Works alongside global.css
+   ============================================ */
+
+/* ── Handles ── */
+.flow-handle {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid var(--border-default, #1F1F1F) !important;
+  background: var(--bg-surface, #111111) !important;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.flow-handle:hover {
+  background: var(--node-accent, #525252) !important;
+  border-color: var(--node-accent, #525252) !important;
+  transform: scale(1.3);
+}
+
+.flow-handle--input  { left: -6px !important; }
+.flow-handle--output { right: -6px !important; }
+
+/* ── Node shell ── */
+.flow-node {
+  background: #111111;
+  border: 1px solid #1F1F1F;
+  border-radius: 8px;
+  width: 240px;
+  min-width: 240px;
+  font-family: inherit;
+  cursor: default;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: visible;
+}
+
+.flow-node:hover {
+  border-color: #2A2A2A;
+}
+
+/* Accent line — 2px colored top border */
+.flow-node__accent {
+  height: 2px;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+}
+
+/* ── Header ── */
+.flow-node__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 9px;
+  padding-top: 14px; /* account for accent line */
+}
+
+.flow-node__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.flow-node__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.flow-node__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.flow-node__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flow-node__sublabel {
+  font-size: 10px;
+  color: #52525B;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Status badge */
+.flow-node__status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
+
+.flow-node__status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.flow-node__status-dot--pulse {
+  animation: nodePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Body ── */
+.flow-node__body {
+  padding: 0 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Divider between header and body */
+.flow-node__body:not(:empty) {
+  border-top: 1px solid #1A1A1A;
+  padding-top: 8px;
+  margin-top: 0;
+}
+
+/* ── Field rows ── */
+.node-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 11px;
+  color: #A1A1AA;
+  line-height: 1.4;
+}
+
+.node-field__key {
+  color: #52525B;
+  flex-shrink: 0;
+  min-width: 52px;
+  font-size: 10px;
+  padding-top: 1px;
+}
+
+.node-field__value {
+  color: #D4D4D8;
+  word-break: break-word;
+}
+
+.node-field__value--dim {
+  color: #52525B;
+  font-style: italic;
+}
+
+/* Tag pill */
+.node-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  background: #1A1A1A;
+  color: #71717A;
+  border: 1px solid #1F1F1F;
+}
+
+/* Method badge (HTTP, Webhook) */
+.node-method {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  letter-spacing: 0.03em;
+}
+
+.node-method--get    { background: #052e16; color: #4ade80; }
+.node-method--post   { background: #1c1917; color: #fb923c; }
+.node-method--put    { background: #1e1a4a; color: #818cf8; }
+.node-method--patch  { background: #1c1917; color: #facc15; }
+.node-method--delete { background: #2a0a0a; color: #f87171; }
+
+/* Condition branch labels */
+.node-branch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: #0F0F0F;
+  border: 1px solid #1A1A1A;
+  font-size: 10px;
+}
+
+.node-branch__label {
+  color: #52525B;
+  font-size: 10px;
+}
+
+.node-branch__value {
+  color: #D4D4D8;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* Schedule cron display */
+.node-cron {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: #0F0F0F;
+  border: 1px solid #1A1A1A;
+}
+
+.node-cron__expr {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: #D4D4D8;
+  letter-spacing: 0.04em;
+}
+
+.node-cron__human {
+  font-size: 10px;
+  color: #52525B;
+  margin-left: auto;
+}
