@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /canvas
+Disallow: /executions
+Disallow: /credentials
+Disallow: /settings
+Disallow: /api/
+
+Sitemap: https://flowos.app/sitemap.xml

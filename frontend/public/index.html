@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- ─── Primary Meta ─── -->
+    <title>FlowOS — Automate Everything</title>
+    <meta name="description" content="FlowOS is a powerful workflow automation platform. Connect apps, automate tasks, and build complex workflows with a visual drag-and-drop editor. No code required." />
+    <meta name="keywords" content="workflow automation, no-code, zapier alternative, n8n alternative, make alternative, automation platform, API integrations, webhooks, scheduled tasks" />
+    <meta name="author" content="FlowOS Inc." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://flowos.app" />
+
+    <!-- ─── Theme & PWA ─── -->
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FlowOS" />
+    <meta name="application-name" content="FlowOS" />
+    <meta name="msapplication-TileColor" content="#0A0A0A" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- ─── Open Graph ─── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://flowos.app" />
+    <meta property="og:site_name" content="FlowOS" />
+    <meta property="og:title" content="FlowOS — Automate Everything" />
+    <meta property="og:description" content="Build powerful automations in minutes. Connect 300+ apps, run workflows on triggers, schedules, or webhooks. The automation platform built for developers and teams." />
+    <meta property="og:image" content="https://flowos.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="FlowOS workflow automation platform screenshot" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ─── Twitter Card ─── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@flowosapp" />
+    <meta name="twitter:creator" content="@flowosapp" />
+    <meta name="twitter:title" content="FlowOS — Automate Everything" />
+    <meta name="twitter:description" content="Build powerful automations in minutes. Connect 300+ apps, run workflows on triggers, schedules, or webhooks." />
+    <meta name="twitter:image" content="https://flowos.app/og-image.png" />
+
+    <!-- ─── Favicons ─── -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#0A0A0A" />
+
+    <!-- ─── Fonts (Inter Variable) ─── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    />
+
+    <!-- ─── DNS Prefetch for common integrations ─── -->
+    <link rel="dns-prefetch" href="https://api.flowos.app" />
+    <link rel="dns-prefetch" href="https://ws.flowos.app" />
+    <link rel="dns-prefetch" href="https://cdn.flowos.app" />
+    <link rel="dns-prefetch" href="https://accounts.google.com" />
+    <link rel="dns-prefetch" href="https://slack.com" />
+
+    <!-- ─── Critical Inline Styles: prevent FOUC / white flash ─── -->
+    <style>
+      /*
+       * CRITICAL PATH CSS
+       * Sets dark baseline before any JS/React loads.
+       * Prevents flash of white background on initial paint.
+       * All real styles live in global.css — this is just the shell.
+       */
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        color-scheme: dark;
+
+        /* ── Brand ── */
+        --color-brand:        #5B6AF0;
+        --color-brand-hover:  #4A59DF;
+        --color-brand-muted:  rgba(91, 106, 240, 0.12);
+
+        /* ── Base surfaces ── */
+        --bg-base:            #0A0A0A;
+        --bg-surface:         #111111;
+        --bg-elevated:        #161616;
+        --bg-overlay:         #1C1C1C;
+
+        /* ── Borders ── */
+        --border-default:     #1F1F1F;
+        --border-subtle:      #171717;
+        --border-strong:      #2A2A2A;
+        --border-focus:       #5B6AF0;
+
+        /* ── Text ── */
+        --text-primary:       #FFFFFF;
+        --text-secondary:     #A1A1AA;
+        --text-tertiary:      #71717A;
+        --text-disabled:      #3F3F46;
+        --text-inverse:       #09090B;
+
+        /* ── Semantic ── */
+        --color-success:      #22C55E;
+        --color-success-muted:rgba(34, 197, 94, 0.12);
+        --color-warning:      #F59E0B;
+        --color-warning-muted:rgba(245, 158, 11, 0.12);
+        --color-error:        #EF4444;
+        --color-error-muted:  rgba(239, 68, 68, 0.12);
+        --color-info:         #3B82F6;
+        --color-info-muted:   rgba(59, 130, 246, 0.12);
+
+        /* ── Node / Integration type colors ── */
+        --node-trigger:       #8B5CF6;
+        --node-trigger-muted: rgba(139, 92, 246, 0.12);
+        --node-action:        #06B6D4;
+        --node-action-muted:  rgba(6, 182, 212, 0.12);
+        --node-logic:         #F59E0B;
+        --node-logic-muted:   rgba(245, 158, 11, 0.12);
+        --node-transform:     #10B981;
+        --node-transform-muted: rgba(16, 185, 129, 0.12);
+
+        /* ── Integration brand colors ── */
+        --int-gmail:          #EA4335;
+        --int-google-sheets:  #34A853;
+        --int-slack:          #4A154B;
+        --int-slack-accent:   #E01E5A;
+        --int-whatsapp:       #25D366;
+        --int-telegram:       #2CA5E0;
+        --int-github:         #E6EDF3;
+        --int-notion:         #E8E8E8;
+        --int-airtable:       #FCB400;
+        --int-stripe:         #635BFF;
+        --int-openai:         #10A37F;
+        --int-discord:        #5865F2;
+        --int-linear:         #5E6AD2;
+        --int-jira:           #0052CC;
+        --int-hubspot:        #FF7A59;
+        --int-salesforce:     #00A1E0;
+        --int-postgres:       #336791;
+        --int-mysql:          #4479A1;
+        --int-mongodb:        #47A248;
+        --int-redis:          #DC382D;
+        --int-aws-s3:         #FF9900;
+        --int-twilio:         #F22F46;
+        --int-sendgrid:       #1A82E2;
+        --int-mailchimp:      #FFE01B;
+        --int-razorpay:       #3395FF;
+        --int-shopify:        #96BF48;
+        --int-woocommerce:    #96588A;
+        --int-typeform:       #262627;
+        --int-google-calendar:#4285F4;
+        --int-dropbox:        #0061FF;
+        --int-box:            #0061D5;
+        --int-onedrive:       #0078D4;
+        --int-trello:         #0052CC;
+        --int-asana:          #FC636B;
+        --int-clickup:        #7B68EE;
+        --int-pipedrive:      #1A1A2E;
+        --int-zendesk:        #03363D;
+        --int-intercom:       #286EFA;
+        --int-mixpanel:       #7856FF;
+        --int-segment:        #52BD94;
+        --int-posthog:        #E74C3C;
+        --int-anthropic:      #D4A97A;
+        --int-cohere:         #39594D;
+
+        /* ── Typography ── */
+        --font-sans:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-mono:          'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+        /* ── Spacing scale ── */
+        --space-1:  4px;
+        --space-2:  8px;
+        --space-3:  12px;
+        --space-4:  16px;
+        --space-5:  20px;
+        --space-6:  24px;
+        --space-8:  32px;
+        --space-10: 40px;
+        --space-12: 48px;
+        --space-16: 64px;
+
+        /* ── Radius ── */
+        --radius-sm:   4px;
+        --radius-md:   6px;
+        --radius-lg:   8px;
+        --radius-xl:   12px;
+        --radius-2xl:  16px;
+        --radius-full: 9999px;
+
+        /* ── Sidebar ── */
+        --sidebar-width:          220px;
+        --sidebar-collapsed-width: 56px;
+
+        /* ── Canvas ── */
+        --canvas-bg:       #0D0D0D;
+        --canvas-dot:      #1E1E1E;
+        --canvas-grid:     #161616;
+
+        /* ── Z-index scale ── */
+        --z-base:      0;
+        --z-dropdown:  100;
+        --z-sticky:    200;
+        --z-overlay:   300;
+        --z-modal:     400;
+        --z-popover:   500;
+        --z-toast:     600;
+        --z-tooltip:   700;
+
+        /* ── Transitions ── */
+        --transition-fast:   100ms ease;
+        --transition-base:   150ms ease;
+        --transition-slow:   250ms ease;
+
+        /* ── Shadows (minimal, dark-mode appropriate) ── */
+        --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.4);
+        --shadow-md:   0 4px 6px rgba(0, 0, 0, 0.5);
+        --shadow-lg:   0 10px 15px rgba(0, 0, 0, 0.6);
+        --shadow-focus:0 0 0 2px var(--color-brand);
+      }
+
+      html {
+        background-color: var(--bg-base);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        font-size: 14px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+
+      body {
+        background-color: var(--bg-base);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        min-height: 100%;
+        overflow-x: hidden;
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Loading state shown before React hydrates */
+      #app-loader {
+        position: fixed;
+        inset: 0;
+        background: var(--bg-base);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 300ms ease, visibility 300ms ease;
+      }
+
+      #app-loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      #app-loader .loader-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      #app-loader .loader-wordmark {
+        color: var(--text-primary);
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+      }
+
+      #app-loader .loader-spinner {
+        width: 20px;
+        height: 20px;
+        border: 1.5px solid var(--border-default);
+        border-top-color: var(--color-brand);
+        border-radius: 50%;
+        animation: spin 600ms linear infinite;
+      }
+
+      #app-loader .loader-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-strong);
+        border-radius: var(--radius-full);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3F3F46;
+      }
+
+      /* Selection color */
+      ::selection {
+        background: var(--color-brand-muted);
+        color: var(--text-primary);
+      }
+
+      /* Focus visible outline */
+      :focus-visible {
+        outline: 2px solid var(--color-brand);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+      }
+
+      /* Remove focus for mouse users */
+      :focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      /* Disable overscroll bounce on canvas pages */
+      body[data-page="canvas"] {
+        overscroll-behavior: none;
+      }
+    </style>
+
+    <!-- ─── Structured Data (JSON-LD) ─── -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FlowOS",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://flowos.app",
+        "description": "FlowOS is a visual workflow automation platform for connecting apps, automating tasks, and building complex multi-step workflows without code.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free tier available"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "FlowOS Inc.",
+          "url": "https://flowos.app"
+        },
+        "featureList": [
+          "Visual drag-and-drop workflow editor",
+          "300+ app integrations",
+          "Webhook triggers",
+          "Scheduled automation",
+          "Real-time execution logs",
+          "Team collaboration",
+          "Custom HTTP requests",
+          "If/else logic nodes",
+          "Loop and switch nodes",
+          "OAuth credential management"
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- ─── Pre-React App Loader ─── -->
+    <!--
+      Shown immediately while React JS bundle downloads and hydrates.
+      React's useEffect will add class="hidden" once the app mounts,
+      triggering the CSS opacity transition defined above.
+    -->
+    <div id="app-loader" role="status" aria-label="Loading FlowOS">
+      <div class="loader-logo">
+        <div class="loader-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 10C4 6.686 6.686 4 10 4V2C5.582 2 2 5.582 2 10H4Z" fill="#5B6AF0"/>
+            <path d="M10 16C13.314 16 16 13.314 16 10H18C18 14.418 14.418 18 10 18V16Z" fill="#5B6AF0" opacity="0.5"/>
+            <circle cx="10" cy="10" r="2.5" fill="#5B6AF0"/>
+          </svg>
+        </div>
+        <span class="loader-wordmark">FlowOS</span>
+        <div class="loader-spinner" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- ─── React Mount Point ─── -->
+    <div id="root"></div>
+
+    <!--
+      Vite injects the <script type="module" src="/src/main.jsx"> tag here
+      automatically during build. No manual script tag needed.
+
+      In production:
+        - main.jsx is bundled, hashed, and injected as a <script> by Vite
+        - CSS is extracted to a separate hashed .css file
+        - Assets are fingerprinted and served from /assets/
+
+      The noscript fallback below handles users with JS disabled.
+    -->
+    <noscript>
+      <div style="
+        position: fixed;
+        inset: 0;
+        background: #0A0A0A;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 15px;
+        text-align: center;
+        padding: 24px;
+        line-height: 1.6;
+      ">
+        <div>
+          <strong style="display: block; font-size: 18px; margin-bottom: 8px;">JavaScript required</strong>
+          FlowOS requires JavaScript to run. Please enable JavaScript in your browser settings and refresh the page.
+        </div>
+      </div>
+    </noscript>
+  </body>
+</html>
